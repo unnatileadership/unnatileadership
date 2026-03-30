@@ -1,0 +1,1311 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Unnati Leadership — Coaching for Growth</title>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;0,700;1,300;1,400&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+*, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+:root {
+  --forest:   #1e3a2f;
+  --sage:     #4a7c59;
+  --mint:     #a8d5b5;
+  --gold:     #d4a24c;
+  --sand:     #f5efe6;
+  --cream:    #faf7f2;
+  --charcoal: #2c2c2c;
+  --mist:     #e8e0d4;
+  --white:    #ffffff;
+  --radius:   16px;
+}
+
+html { scroll-behavior: smooth; }
+
+body {
+  font-family: 'DM Sans', sans-serif;
+  background: var(--cream);
+  color: var(--charcoal);
+  overflow-x: hidden;
+}
+
+/* ── NAV ─────────────────────────────────────────────────────── */
+nav {
+  position: fixed; top: 0; left: 0; right: 0; z-index: 100;
+  display: flex; align-items: center; justify-content: space-between;
+  padding: 20px 48px;
+  background: rgba(250,247,242,0.9);
+  backdrop-filter: blur(12px);
+  border-bottom: 1px solid var(--mist);
+  transition: padding 0.3s;
+}
+.nav-logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem;
+  font-weight: 600;
+  color: var(--forest);
+  letter-spacing: 0.02em;
+}
+.nav-logo span { color: var(--gold); }
+.nav-links { display: flex; gap: 36px; align-items: center; }
+.nav-links a {
+  text-decoration: none; font-size: 0.85rem; font-weight: 500;
+  color: var(--charcoal); letter-spacing: 0.04em; text-transform: uppercase;
+  transition: color 0.2s;
+}
+.nav-links a:hover { color: var(--sage); }
+.nav-cta {
+  background: var(--forest); color: var(--white) !important;
+  padding: 10px 24px; border-radius: 40px;
+  transition: background 0.2s, transform 0.2s !important;
+}
+.nav-cta:hover { background: var(--sage) !important; transform: translateY(-1px); }
+.nav-burger { display: none; flex-direction: column; gap: 5px; cursor: pointer; }
+.nav-burger span { width: 24px; height: 2px; background: var(--charcoal); border-radius: 2px; transition: 0.3s; }
+
+/* ── HERO ────────────────────────────────────────────────────── */
+#home {
+  min-height: 100vh;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  padding-top: 80px;
+  position: relative;
+  overflow: hidden;
+}
+.hero-left {
+  display: flex; flex-direction: column; justify-content: center;
+  padding: 80px 48px 80px 80px;
+  position: relative; z-index: 2;
+}
+.hero-tag {
+  display: inline-flex; align-items: center; gap: 8px;
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--sage);
+  margin-bottom: 28px;
+}
+.hero-tag::before {
+  content: '';
+  width: 28px; height: 2px;
+  background: var(--gold); border-radius: 2px;
+}
+.hero-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(3rem, 5.5vw, 5rem);
+  font-weight: 300;
+  line-height: 1.1;
+  color: var(--forest);
+  margin-bottom: 8px;
+}
+.hero-title em {
+  font-style: italic;
+  color: var(--gold);
+}
+.hero-subtitle {
+  font-size: 1.05rem;
+  font-weight: 300;
+  line-height: 1.7;
+  color: #666;
+  max-width: 440px;
+  margin-bottom: 44px;
+  margin-top: 16px;
+}
+.hero-buttons {
+  display: flex; gap: 16px; flex-wrap: wrap;
+}
+.btn-primary {
+  background: var(--forest); color: var(--white);
+  padding: 14px 32px; border-radius: 40px;
+  text-decoration: none; font-size: 0.9rem; font-weight: 500;
+  letter-spacing: 0.03em;
+  transition: all 0.25s;
+  border: none; cursor: pointer;
+  display: inline-block;
+}
+.btn-primary:hover { background: var(--sage); transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,58,47,0.25); }
+.btn-outline {
+  background: transparent; color: var(--forest);
+  padding: 14px 32px; border-radius: 40px;
+  text-decoration: none; font-size: 0.9rem; font-weight: 500;
+  border: 1.5px solid var(--forest);
+  transition: all 0.25s;
+  display: inline-block;
+}
+.btn-outline:hover { background: var(--forest); color: var(--white); transform: translateY(-2px); }
+
+.hero-right {
+  position: relative;
+  background: var(--forest);
+  overflow: hidden;
+}
+.hero-right::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 30% 60%, rgba(74,124,89,0.4) 0%, transparent 65%),
+              radial-gradient(ellipse at 80% 20%, rgba(212,162,76,0.2) 0%, transparent 50%);
+}
+.hero-quote {
+  position: absolute; bottom: 60px; left: 48px; right: 48px;
+  z-index: 2;
+}
+.hero-quote blockquote {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 300; font-style: italic;
+  color: rgba(255,255,255,0.9);
+  line-height: 1.4;
+  margin-bottom: 12px;
+}
+.hero-quote cite {
+  font-size: 0.8rem; letter-spacing: 0.1em; text-transform: uppercase;
+  color: var(--gold); font-style: normal;
+}
+.hero-circles {
+  position: absolute; top: 40px; right: 40px;
+  width: 200px; height: 200px;
+}
+.hero-circles::before {
+  content: '';
+  position: absolute; inset: 0;
+  border-radius: 50%;
+  border: 1px solid rgba(255,255,255,0.1);
+}
+.hero-circles::after {
+  content: '';
+  position: absolute; inset: 30px;
+  border-radius: 50%;
+  border: 1px solid rgba(212,162,76,0.3);
+}
+.hero-meaning {
+  position: absolute; top: 50%; left: 50%; transform: translate(-50%, -50%);
+  text-align: center;
+}
+.hero-meaning .sanskrit {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; color: rgba(255,255,255,0.15);
+  line-height: 1;
+}
+.hero-meaning .translation {
+  font-size: 0.7rem; letter-spacing: 0.2em; text-transform: uppercase;
+  color: rgba(212,162,76,0.6);
+}
+
+/* ── ABOUT ───────────────────────────────────────────────────── */
+#about {
+  padding: 120px 80px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: center;
+  background: var(--white);
+}
+.about-label {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 16px;
+  display: flex; align-items: center; gap: 10px;
+}
+.about-label::after { content: ''; flex: 1; max-width: 40px; height: 1px; background: var(--gold); }
+.about-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400; line-height: 1.25;
+  color: var(--forest);
+  margin-bottom: 24px;
+}
+.about-body {
+  font-size: 1rem; line-height: 1.8; color: #555;
+  margin-bottom: 16px;
+}
+.about-right { position: relative; }
+.about-card {
+  background: var(--sand);
+  border-radius: var(--radius);
+  padding: 40px;
+  position: relative;
+  overflow: hidden;
+}
+.about-card::before {
+  content: 'उन्नति';
+  position: absolute; bottom: -20px; right: 16px;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 6rem; color: rgba(30,58,47,0.06);
+  line-height: 1;
+}
+.about-card h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; font-weight: 600; color: var(--forest);
+  margin-bottom: 20px;
+}
+.pillars {
+  display: flex; flex-direction: column; gap: 16px;
+}
+.pillar {
+  display: flex; gap: 14px; align-items: flex-start;
+}
+.pillar-icon {
+  width: 36px; height: 36px; border-radius: 8px;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+.pillar-text strong {
+  display: block; font-size: 0.9rem; color: var(--forest); margin-bottom: 2px;
+}
+.pillar-text span { font-size: 0.83rem; color: #777; line-height: 1.4; }
+
+/* ── SERVICES ────────────────────────────────────────────────── */
+#services {
+  padding: 120px 80px;
+  background: var(--cream);
+}
+.section-header {
+  text-align: center; margin-bottom: 72px;
+}
+.section-tag {
+  font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em;
+  text-transform: uppercase; color: var(--gold);
+  margin-bottom: 12px;
+}
+.section-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3.5vw, 3rem);
+  font-weight: 400; color: var(--forest);
+  line-height: 1.2;
+}
+.section-sub {
+  font-size: 1rem; color: #777; margin-top: 12px; max-width: 500px; margin-inline: auto;
+}
+
+.services-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 28px;
+  align-items: stretch;
+}
+.service-card {
+  display: flex;
+  flex-direction: column;
+}
+.service-card-inner {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+}
+.service-card-inner .service-btn {
+  margin-top: auto;
+}
+.service-card {
+  border-radius: 24px;
+  overflow: hidden;
+  position: relative;
+  transition: transform 0.3s, box-shadow 0.3s;
+}
+.service-card:hover { transform: translateY(-6px); box-shadow: 0 20px 60px rgba(30,58,47,0.15); }
+
+.service-card.exec { background: var(--forest); }
+.service-card.youth { background: var(--sand); border: 1px solid var(--mist); }
+
+.service-card-inner { padding: 48px; position: relative; z-index: 1; }
+.service-eyebrow {
+  font-size: 0.7rem; font-weight: 600; letter-spacing: 0.18em; text-transform: uppercase;
+  margin-bottom: 20px;
+}
+.service-card.exec .service-eyebrow { color: var(--gold); }
+.service-card.youth .service-eyebrow { color: var(--sage); }
+
+.service-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.2rem; font-weight: 600; line-height: 1.15;
+  margin-bottom: 16px;
+}
+.service-card.exec .service-title { color: var(--white); }
+.service-card.youth .service-title { color: var(--forest); }
+
+.service-desc {
+  font-size: 0.92rem; line-height: 1.75;
+  margin-bottom: 32px;
+}
+.service-card.exec .service-desc { color: rgba(255,255,255,0.7); }
+.service-card.youth .service-desc { color: #666; }
+
+.service-features { list-style: none; margin-bottom: 36px; display: flex; flex-direction: column; gap: 10px; }
+.service-features li {
+  font-size: 0.88rem; display: flex; align-items: center; gap: 10px;
+}
+.service-card.exec .service-features li { color: rgba(255,255,255,0.8); }
+.service-card.youth .service-features li { color: var(--charcoal); }
+.service-features li::before {
+  content: '';
+  width: 6px; height: 6px; border-radius: 50%; flex-shrink: 0;
+}
+.service-card.exec .service-features li::before { background: var(--gold); }
+.service-card.youth .service-features li::before { background: var(--sage); }
+
+.service-btn {
+  display: inline-block; text-decoration: none;
+  padding: 12px 28px; border-radius: 40px;
+  font-size: 0.85rem; font-weight: 500; letter-spacing: 0.04em;
+  transition: all 0.25s;
+}
+.service-card.exec .service-btn {
+  background: var(--gold); color: var(--forest);
+}
+.service-card.exec .service-btn:hover { background: white; transform: translateY(-1px); }
+.service-card.youth .service-btn {
+  background: var(--forest); color: white;
+}
+.service-card.youth .service-btn:hover { background: var(--sage); transform: translateY(-1px); }
+
+.service-deco {
+  position: absolute; bottom: -30px; right: -20px;
+  width: 180px; height: 180px; border-radius: 50%;
+  opacity: 0.06;
+}
+.service-card.exec .service-deco { background: var(--gold); }
+.service-card.youth .service-deco { background: var(--sage); }
+
+/* ── APPROACH ────────────────────────────────────────────────── */
+#approach {
+  padding: 100px 80px;
+  background: var(--forest);
+  color: var(--white);
+  text-align: center;
+  position: relative;
+  overflow: hidden;
+}
+#approach::before {
+  content: '';
+  position: absolute; inset: 0;
+  background: radial-gradient(ellipse at 20% 50%, rgba(74,124,89,0.35) 0%, transparent 60%),
+              radial-gradient(ellipse at 80% 30%, rgba(212,162,76,0.15) 0%, transparent 50%);
+}
+.approach-inner { position: relative; z-index: 1; }
+.approach-tag { color: var(--gold); margin-bottom: 12px; font-size: 0.72rem; font-weight: 600; letter-spacing: 0.15em; text-transform: uppercase; }
+.approach-title {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 4vw, 3.5rem);
+  font-weight: 300; font-style: italic;
+  margin-bottom: 60px; line-height: 1.2;
+  color: rgba(255,255,255,0.95);
+}
+.steps {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 32px;
+  max-width: 960px; margin-inline: auto;
+}
+.step {
+  background: rgba(255,255,255,0.06);
+  border: 1px solid rgba(255,255,255,0.1);
+  border-radius: var(--radius);
+  padding: 36px 28px;
+  transition: background 0.3s;
+}
+.step:hover { background: rgba(255,255,255,0.1); }
+.step-num {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 3rem; color: var(--gold); opacity: 0.4;
+  line-height: 1; margin-bottom: 12px;
+}
+.step-title { font-weight: 600; font-size: 0.95rem; margin-bottom: 8px; }
+.step-desc { font-size: 0.83rem; color: rgba(255,255,255,0.55); line-height: 1.6; }
+
+/* ── TESTIMONIALS ────────────────────────────────────────────── */
+#testimonials {
+  padding: 120px 80px;
+  background: var(--white);
+}
+.testimonials-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 28px;
+  margin-top: 60px;
+}
+.testimonial-card {
+  background: var(--sand);
+  border-radius: var(--radius);
+  padding: 36px 32px;
+  position: relative;
+  transition: transform 0.3s;
+}
+.testimonial-card:hover { transform: translateY(-4px); }
+.quote-mark {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 5rem; color: var(--sage); opacity: 0.2;
+  line-height: 0.8; margin-bottom: 8px;
+}
+.testimonial-text {
+  font-size: 0.93rem; line-height: 1.75; color: #555;
+  font-style: italic; margin-bottom: 24px;
+}
+.testimonial-author {
+  display: flex; align-items: center; gap: 12px;
+}
+.author-avatar {
+  width: 40px; height: 40px; border-radius: 50%;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1rem; color: var(--white); font-weight: 600;
+}
+.author-name { font-size: 0.88rem; font-weight: 600; color: var(--forest); }
+.author-role { font-size: 0.78rem; color: #999; }
+.testimonial-badge {
+  position: absolute; top: 24px; right: 24px;
+  background: var(--sage); color: white;
+  font-size: 0.65rem; font-weight: 600; letter-spacing: 0.1em;
+  text-transform: uppercase; padding: 4px 10px; border-radius: 20px;
+}
+.testimonial-badge.youth { background: var(--gold); color: var(--forest); }
+
+/* ── CONTACT / SCHEDULE ──────────────────────────────────────── */
+#contact {
+  padding: 120px 80px;
+  background: var(--sand);
+}
+.contact-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 80px;
+  align-items: start;
+  max-width: 1100px;
+  margin-inline: auto;
+}
+.contact-left h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: clamp(2rem, 3vw, 2.8rem);
+  font-weight: 400; color: var(--forest);
+  line-height: 1.25; margin-bottom: 20px;
+}
+.contact-left p {
+  font-size: 0.95rem; line-height: 1.8; color: #666;
+  margin-bottom: 36px;
+}
+.contact-info { display: flex; flex-direction: column; gap: 16px; }
+.contact-item {
+  display: flex; align-items: center; gap: 14px;
+  font-size: 0.9rem; color: var(--charcoal);
+}
+.contact-icon {
+  width: 40px; height: 40px; border-radius: 10px;
+  background: var(--forest);
+  display: flex; align-items: center; justify-content: center;
+  font-size: 1rem; flex-shrink: 0;
+}
+
+/* Form */
+.contact-form {
+  background: var(--white);
+  border-radius: 24px;
+  padding: 48px;
+  box-shadow: 0 4px 32px rgba(30,58,47,0.08);
+}
+.contact-form h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.5rem; color: var(--forest);
+  margin-bottom: 8px;
+}
+.contact-form p { font-size: 0.85rem; color: #999; margin-bottom: 28px; }
+.form-row { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
+.form-group { margin-bottom: 18px; }
+.form-group label {
+  display: block; font-size: 0.75rem; font-weight: 600;
+  letter-spacing: 0.08em; text-transform: uppercase;
+  color: #888; margin-bottom: 6px;
+}
+.form-group input,
+.form-group select,
+.form-group textarea {
+  width: 100%; padding: 12px 16px;
+  border: 1.5px solid var(--mist);
+  border-radius: 10px;
+  font-family: 'DM Sans', sans-serif;
+  font-size: 0.9rem; color: var(--charcoal);
+  background: var(--cream);
+  transition: border-color 0.2s, box-shadow 0.2s;
+  outline: none;
+}
+.form-group input:focus,
+.form-group select:focus,
+.form-group textarea:focus {
+  border-color: var(--sage);
+  box-shadow: 0 0 0 3px rgba(74,124,89,0.12);
+}
+.form-group textarea { resize: vertical; min-height: 100px; }
+.form-group select { appearance: none; cursor: pointer; }
+.form-submit {
+  width: 100%;
+  background: var(--forest); color: white;
+  border: none; padding: 14px;
+  border-radius: 40px; font-size: 0.9rem; font-weight: 500;
+  letter-spacing: 0.04em; cursor: pointer;
+  font-family: 'DM Sans', sans-serif;
+  transition: background 0.2s, transform 0.2s;
+}
+.form-submit:hover { background: var(--sage); transform: translateY(-1px); }
+.form-success {
+  display: none;
+  text-align: center; padding: 32px;
+  color: var(--forest);
+}
+.form-success .checkmark { font-size: 3rem; margin-bottom: 12px; }
+.form-success h4 { font-family: 'Cormorant Garamond', serif; font-size: 1.5rem; margin-bottom: 8px; }
+.form-success p { font-size: 0.88rem; color: #777; }
+
+/* ── SCHEDULE SECTION ────────────────────────────────────────── */
+#schedule {
+  padding: 80px;
+  background: var(--cream);
+  text-align: center;
+}
+.schedule-inner { max-width: 720px; margin-inline: auto; }
+.schedule-inner h2 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 2.5rem; font-weight: 400; color: var(--forest);
+  margin-bottom: 16px;
+}
+.schedule-inner p { font-size: 0.95rem; color: #777; line-height: 1.7; margin-bottom: 40px; }
+.schedule-options {
+  display: grid; grid-template-columns: repeat(4, 1fr); gap: 16px;
+  margin-bottom: 40px;
+}
+.schedule-option {
+  background: var(--white);
+  border: 1.5px solid var(--mist);
+  border-radius: var(--radius);
+  padding: 28px 20px;
+  cursor: pointer;
+  transition: all 0.25s;
+  text-align: center;
+}
+.schedule-option:hover,
+.schedule-option.active {
+  border-color: var(--sage);
+  background: var(--sand);
+  transform: translateY(-3px);
+  box-shadow: 0 8px 24px rgba(74,124,89,0.12);
+}
+.schedule-option .opt-icon { font-size: 1.8rem; margin-bottom: 10px; }
+.schedule-option .opt-name { font-weight: 600; font-size: 0.9rem; color: var(--forest); margin-bottom: 4px; }
+.schedule-option .opt-duration { font-size: 0.78rem; color: #999; }
+
+.cal-placeholder {
+  background: var(--white);
+  border: 1.5px solid var(--mist);
+  border-radius: 20px;
+  padding: 48px;
+  margin-bottom: 24px;
+}
+.cal-placeholder p { font-size: 0.9rem; color: #aaa; margin-bottom: 16px; }
+.cal-placeholder .cal-note { font-size: 0.78rem; color: #bbb; font-style: italic; }
+.book-btn {
+  display: inline-block;
+  background: var(--gold); color: var(--forest);
+  padding: 14px 40px; border-radius: 40px;
+  font-size: 0.9rem; font-weight: 600;
+  text-decoration: none; letter-spacing: 0.04em;
+  transition: all 0.25s;
+  border: none; cursor: pointer; font-family: 'DM Sans', sans-serif;
+}
+.book-btn:hover { background: var(--forest); color: white; transform: translateY(-2px); box-shadow: 0 8px 24px rgba(30,58,47,0.2); }
+
+/* ── FOOTER ──────────────────────────────────────────────────── */
+footer {
+  background: var(--forest);
+  color: rgba(255,255,255,0.7);
+  padding: 60px 80px 40px;
+}
+.footer-top {
+  display: flex; justify-content: space-between; align-items: flex-start;
+  margin-bottom: 48px; padding-bottom: 40px;
+  border-bottom: 1px solid rgba(255,255,255,0.1);
+  flex-wrap: wrap; gap: 32px;
+}
+.footer-brand .logo {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.6rem; color: white; font-weight: 600;
+  margin-bottom: 12px;
+}
+.footer-brand .logo span { color: var(--gold); }
+.footer-brand p { font-size: 0.85rem; max-width: 260px; line-height: 1.6; }
+.footer-links h4 {
+  color: white; font-size: 0.78rem; font-weight: 600;
+  letter-spacing: 0.1em; text-transform: uppercase;
+  margin-bottom: 16px;
+}
+.footer-links a {
+  display: block; color: rgba(255,255,255,0.55);
+  text-decoration: none; font-size: 0.85rem;
+  margin-bottom: 10px; transition: color 0.2s;
+}
+.footer-links a:hover { color: var(--gold); }
+.footer-bottom {
+  display: flex; justify-content: space-between; align-items: center;
+  flex-wrap: wrap; gap: 12px;
+  font-size: 0.78rem;
+}
+.footer-bottom a { color: var(--gold); text-decoration: none; }
+
+/* ── ANIMATIONS ──────────────────────────────────────────────── */
+@keyframes fadeUp {
+  from { opacity: 0; transform: translateY(30px); }
+  to   { opacity: 1; transform: translateY(0); }
+}
+.fade-up { animation: fadeUp 0.7s ease both; }
+.fade-up-1 { animation-delay: 0.1s; }
+.fade-up-2 { animation-delay: 0.2s; }
+.fade-up-3 { animation-delay: 0.35s; }
+.fade-up-4 { animation-delay: 0.5s; }
+
+
+.service-card.early { background: var(--white); border: 1.5px solid var(--mist); }
+.service-card.early .service-eyebrow { color: var(--gold); }
+.service-card.early .service-title { color: var(--forest); }
+.service-card.early .service-desc { color: #666; }
+.service-card.early .service-features li { color: var(--charcoal); }
+.service-card.early .service-features li::before { background: var(--gold); }
+.service-card.early .service-deco { background: var(--gold); }
+.service-card.early .service-btn { background: var(--gold); color: var(--forest); }
+.service-card.early .service-btn:hover { background: var(--forest); color: white; transform: translateY(-1px); }
+
+/* Week pills */
+.week-pills { display: flex; flex-wrap: wrap; gap: 6px; margin-bottom: 24px; }
+.week-pill {
+  font-size: 0.72rem; font-weight: 600; padding: 4px 11px;
+  border-radius: 20px; background: var(--sand); color: var(--forest);
+  border: 1px solid var(--mist); white-space: nowrap;
+}
+
+/* Early career section */
+#early-career {
+  padding: 100px 80px;
+  background: var(--sand);
+}
+.ec-grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 64px;
+  align-items: start;
+  margin-top: 60px;
+}
+.ec-left h3 {
+  font-family: 'Cormorant Garamond', serif;
+  font-size: 1.8rem; font-weight: 600;
+  color: var(--forest); margin-bottom: 14px; line-height: 1.2;
+}
+.ec-left p { font-size: 0.95rem; line-height: 1.8; color: #666; margin-bottom: 14px; }
+.ec-outcomes { margin-top: 24px; }
+.ec-outcomes h4 {
+  font-size: 0.72rem; font-weight: 700; letter-spacing: 0.12em;
+  text-transform: uppercase; color: var(--gold); margin-bottom: 12px;
+}
+.ec-outcome-item {
+  display: flex; align-items: flex-start; gap: 10px;
+  font-size: 0.88rem; color: var(--charcoal); line-height: 1.5;
+  margin-bottom: 8px;
+}
+.ec-outcome-item::before {
+  content: '→'; color: var(--gold); font-weight: 700;
+  flex-shrink: 0; margin-top: 1px;
+}
+.ec-weeks { display: flex; flex-direction: column; gap: 12px; }
+.ec-week {
+  background: var(--white);
+  border-radius: 12px;
+  padding: 18px 20px;
+  border-left: 4px solid;
+  transition: transform 0.2s, box-shadow 0.2s;
+  cursor: default;
+}
+.ec-week:hover { transform: translateX(4px); box-shadow: 0 4px 16px rgba(30,58,47,0.08); }
+.ec-week-header { display: flex; align-items: center; gap: 10px; margin-bottom: 4px; }
+.ec-week-num {
+  font-size: 0.68rem; font-weight: 700; letter-spacing: 0.1em;
+  text-transform: uppercase; opacity: 0.55;
+}
+.ec-week-title { font-weight: 600; font-size: 0.92rem; color: var(--forest); }
+.ec-week-sub { font-size: 0.8rem; color: #999; padding-left: 0; }
+
+/* ── RESPONSIVE ──────────────────────────────────────────────── */
+@media (max-width: 900px) {
+  #home { grid-template-columns: 1fr; }
+  .hero-right { min-height: 340px; }
+  .hero-left { padding: 60px 32px; }
+  #about { grid-template-columns: 1fr; padding: 80px 32px; gap: 48px; }
+  #services { padding: 80px 32px; }
+  .services-grid { grid-template-columns: 1fr; }
+  #early-career { padding: 80px 32px; }
+  .ec-grid { grid-template-columns: 1fr; gap: 40px; }
+  #approach { padding: 80px 32px; }
+  .steps { grid-template-columns: 1fr 1fr; }
+  #testimonials { padding: 80px 32px; }
+  .testimonials-grid { grid-template-columns: 1fr; }
+  #contact { padding: 80px 32px; }
+  .contact-grid { grid-template-columns: 1fr; gap: 48px; }
+  #schedule { padding: 60px 32px; }
+  .schedule-options { grid-template-columns: 1fr; }
+  footer { padding: 48px 32px 32px; }
+  nav { padding: 16px 24px; }
+  .nav-links { display: none; }
+  .nav-burger { display: flex; }
+}
+
+@media (max-width: 600px) {
+  .form-row { grid-template-columns: 1fr; }
+  .steps { grid-template-columns: 1fr; }
+  .footer-top { flex-direction: column; }
+}
+
+/* Mobile nav open state */
+.nav-links.open {
+  display: flex; flex-direction: column;
+  position: fixed; top: 62px; left: 0; right: 0;
+  background: var(--cream);
+  padding: 24px;
+  gap: 20px;
+  border-bottom: 1px solid var(--mist);
+  z-index: 99;
+}
+</style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav id="navbar">
+  <div class="nav-logo">Unnati <span>Leadership</span></div>
+  <div class="nav-links" id="navLinks">
+    <a href="#about">About</a>
+    <a href="#services">Services</a>
+    <a href="#approach">Approach</a>
+    <a href="#testimonials">Stories</a>
+    <a href="#contact">Contact</a>
+    <a href="#schedule" class="nav-cta">Book a Session</a>
+  </div>
+  <div class="nav-burger" id="burger" onclick="toggleNav()">
+    <span></span><span></span><span></span>
+  </div>
+</nav>
+
+<!-- HERO -->
+<section id="home">
+  <div class="hero-left">
+    <div class="hero-tag fade-up fade-up-1">Coaching for Growth</div>
+    <h1 class="hero-title fade-up fade-up-2">
+      Grow into<br>the leader<br>you <em>already are.</em>
+    </h1>
+    <p class="hero-subtitle fade-up fade-up-3">
+      Unnati Leadership offers transformative 1:1 executive coaching, a structured 6-week early career program, and life coaching for young people discovering who they want to become.
+    </p>
+    <div class="hero-buttons fade-up fade-up-4">
+      <a href="#services" class="btn-primary">Explore Coaching</a>
+      <a href="#schedule" class="btn-outline">Book a Free Call</a>
+    </div>
+  </div>
+  <div class="hero-right">
+    <div class="hero-meaning">
+      <div class="sanskrit">उन्नति</div>
+      <div class="translation">Progress · Rise · Growth</div>
+    </div>
+    <div class="hero-quote">
+      <blockquote>"The journey inward is always the beginning of the journey forward."</blockquote>
+      <cite>Unnati Leadership</cite>
+    </div>
+  </div>
+</section>
+
+<!-- ABOUT -->
+<section id="about">
+  <div class="about-left">
+    <div class="about-label">About Unnati</div>
+    <h2 class="about-title">Coaching that meets you where you are.</h2>
+    <p class="about-body">
+      Unnati — meaning <em>progress</em> and <em>rise</em> in Sanskrit — was founded on a simple belief: that every person has untapped potential waiting to be unlocked. Real growth isn't about adding more; it's about clearing what's in the way.
+    </p>
+    <p class="about-body">
+      Whether you're a seasoned executive navigating a pivotal career moment or a teenager figuring out who you want to be, Unnati Leadership creates a space that is warm, honest, and genuinely personalized.
+    </p>
+    <p class="about-body" style="margin-bottom: 0;">
+      Our coaching draws from evidence-based frameworks, positive psychology, and deep human connection — because lasting change always starts from within.
+    </p>
+  </div>
+  <div class="about-right">
+    <div class="about-card">
+      <h3>The Unnati Difference</h3>
+      <div class="pillars">
+        <div class="pillar">
+          <div class="pillar-icon">🌱</div>
+          <div class="pillar-text">
+            <strong>Deeply Human</strong>
+            <span>Every session is grounded in genuine curiosity and care — no scripts, no formulas.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🎯</div>
+          <div class="pillar-text">
+            <strong>Radically Personalized</strong>
+            <span>Your goals, your pace, your context. Always tailored — never cookie-cutter.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">🔑</div>
+          <div class="pillar-text">
+            <strong>Built for Action</strong>
+            <span>Insight without action is just a good conversation. We go further — together.</span>
+          </div>
+        </div>
+        <div class="pillar">
+          <div class="pillar-icon">✨</div>
+          <div class="pillar-text">
+            <strong>Safe & Confidential</strong>
+            <span>A genuinely private space where you can be honest about what's really going on.</span>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SERVICES -->
+<section id="services">
+  <div class="section-header">
+    <div class="section-tag">What We Offer</div>
+    <h2 class="section-title">Three distinct programs.<br>One shared purpose.</h2>
+    <p class="section-sub">Tailored coaching for every stage of the journey — from the C-suite to the classroom to the first real job.</p>
+  </div>
+
+  <div class="services-grid">
+    <!-- Executive -->
+    <div class="service-card exec">
+      <div class="service-deco"></div>
+      <div class="service-card-inner">
+        <div class="service-eyebrow">Executive Coaching</div>
+        <h3 class="service-title">Lead with clarity.<br>Grow with intention.</h3>
+        <p class="service-desc">
+          For senior leaders, founders, and high-potential professionals facing pivotal transitions. We work on what matters most — not what looks good on a development plan.
+        </p>
+        <ul class="service-features">
+          <li>Leadership presence & executive identity</li>
+          <li>Navigating organizational complexity</li>
+          <li>Difficult conversations & high-stakes decisions</li>
+          <li>Strategic vision & personal brand</li>
+          <li>Work-life integration & sustainable performance</li>
+        </ul>
+        <a href="#schedule" class="service-btn">Start a Conversation</a>
+      </div>
+    </div>
+
+    <!-- Early Career -->
+    <div class="service-card early">
+      <div class="service-deco"></div>
+      <div class="service-card-inner">
+        <div class="service-eyebrow">6-Week Program</div>
+        <h3 class="service-title">Launch your career<br>with intention.</h3>
+        <p class="service-desc">
+          A structured, cohort-ready coaching program for professionals in their first 1–3 years of work. Six focused weeks that build the skills school never taught.
+        </p>
+        <div class="week-pills">
+          <span class="week-pill">Self-Awareness</span>
+          <span class="week-pill">Communication</span>
+          <span class="week-pill">Workplace Navigation</span>
+          <span class="week-pill">Productivity</span>
+          <span class="week-pill">Networking</span>
+          <span class="week-pill">Career Vision</span>
+        </div>
+        <ul class="service-features">
+          <li>6 structured weekly modules</li>
+          <li>12 coaching sessions total</li>
+          <li>Downloadable weekly deliverables</li>
+          <li>Assessment rubric &amp; intake tools</li>
+        </ul>
+        <a href="#early-career" class="service-btn">See the Program →</a>
+      </div>
+    </div>
+
+    <!-- Youth -->
+    <div class="service-card youth">
+      <div class="service-deco"></div>
+      <div class="service-card-inner">
+        <div class="service-eyebrow">Youth Life Coaching</div>
+        <h3 class="service-title">Discover who<br>you're becoming.</h3>
+        <p class="service-desc">
+          For high school students and their families. We build confidence, clarity, and self-awareness — while supporting teens in exploring what truly excites them about their future.
+        </p>
+        <ul class="service-features">
+          <li>Identity, confidence & self-discovery</li>
+          <li>Academic purpose & motivation</li>
+          <li>College & career exploration</li>
+          <li>Relationships, communication & social skills</li>
+          <li>Stress, resilience & emotional intelligence</li>
+        </ul>
+        <a href="#schedule" class="service-btn">Book a Family Intro Call</a>
+      </div>
+    </div>
+  </div>
+</section>
+
+
+<!-- EARLY CAREER PROGRAM -->
+<section id="early-career">
+  <div class="section-header">
+    <div class="section-tag">6-Week Program</div>
+    <h2 class="section-title">Early Career Coaching Program</h2>
+    <p class="section-sub">For professionals in their first 1–3 years at work — structured, practical, and deeply human.</p>
+  </div>
+
+  <div class="ec-grid">
+    <div class="ec-left">
+      <h3>The skills that matter most aren't taught in school.</h3>
+      <p>Starting your career is exciting — and overwhelming. Most early professionals are figuring out workplace dynamics, communication, time management, and career direction entirely on their own.</p>
+      <p>The Unnati Early Career Program is a 6-week, 1:1 coaching journey that gives new professionals a structured framework to build confidence, capability, and clarity at exactly the right moment.</p>
+      <p>Each week focuses on a distinct theme, with guided coaching sessions, practical activities, and a downloadable deliverable that becomes part of your personal professional toolkit.</p>
+
+      <div class="ec-outcomes">
+        <h4>What you'll walk away with</h4>
+        <div class="ec-outcome-item">Clarity on your values, strengths, and professional identity</div>
+        <div class="ec-outcome-item">A personal communication style guide</div>
+        <div class="ec-outcome-item">A stakeholder map and workplace navigation strategy</div>
+        <div class="ec-outcome-item">Your own productivity system — built around how you actually work</div>
+        <div class="ec-outcome-item">A networking tracker and authentic relationship strategy</div>
+        <div class="ec-outcome-item">A written 12–18 month career roadmap with accountability plan</div>
+      </div>
+    </div>
+
+    <div class="ec-right">
+      <div class="ec-weeks">
+        <div class="ec-week" style="border-color:#c45c3a">
+          <div class="ec-week-header">
+            <span class="ec-week-num">Week 1</span>
+            <span class="ec-week-title">Foundation &amp; Self-Awareness</span>
+          </div>
+          <div class="ec-week-sub">Values clarification · Assessment · Your professional 'why'</div>
+        </div>
+        <div class="ec-week" style="border-color:#4a7c59">
+          <div class="ec-week-header">
+            <span class="ec-week-num">Week 2</span>
+            <span class="ec-week-title">Communication &amp; Presence</span>
+          </div>
+          <div class="ec-week-sub">Executive presence · Email mastery · Asking for what you need</div>
+        </div>
+        <div class="ec-week" style="border-color:#4a6fa5">
+          <div class="ec-week-header">
+            <span class="ec-week-num">Week 3</span>
+            <span class="ec-week-title">Navigating the Workplace</span>
+          </div>
+          <div class="ec-week-sub">Stakeholder mapping · Managing up · Unwritten rules</div>
+        </div>
+        <div class="ec-week" style="border-color:#8a5fa0">
+          <div class="ec-week-header">
+            <span class="ec-week-num">Week 4</span>
+            <span class="ec-week-title">Performance &amp; Productivity</span>
+          </div>
+          <div class="ec-week-sub">Prioritization frameworks · Deep work habits · Boundaries</div>
+        </div>
+        <div class="ec-week" style="border-color:#d4a24c">
+          <div class="ec-week-header">
+            <span class="ec-week-num">Week 5</span>
+            <span class="ec-week-title">Networking &amp; Visibility</span>
+          </div>
+          <div class="ec-week-sub">Authentic relationships · LinkedIn presence · Informational interviews</div>
+        </div>
+        <div class="ec-week" style="border-color:#2a7a7a">
+          <div class="ec-week-header">
+            <span class="ec-week-num">Week 6</span>
+            <span class="ec-week-title">Vision &amp; Momentum</span>
+          </div>
+          <div class="ec-week-sub">Career roadmap · Personal board of advisors · 90-day plan</div>
+        </div>
+        <div style="text-align:center; margin-top: 8px;">
+          <a href="#schedule" class="btn-primary" style="font-size:0.88rem; padding: 12px 28px;">Apply for the Program →</a>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- APPROACH -->
+<section id="approach">
+  <div class="approach-inner">
+    <div class="approach-tag">How We Work</div>
+    <h2 class="approach-title">"Coaching is not about having the answers.<br>It's about asking better questions."</h2>
+    <div class="steps">
+      <div class="step">
+        <div class="step-num">01</div>
+        <div class="step-title">Discovery Call</div>
+        <div class="step-desc">A free 30-minute conversation to understand your situation, goals, and whether we're a good fit.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">02</div>
+        <div class="step-title">Intake & Alignment</div>
+        <div class="step-desc">We map your starting point together — what's working, what isn't, and what matters most.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">03</div>
+        <div class="step-title">Coaching Sessions</div>
+        <div class="step-desc">Regular 1:1 sessions, tailored entirely to you — dynamic, honest, and progress-focused.</div>
+      </div>
+      <div class="step">
+        <div class="step-num">04</div>
+        <div class="step-title">Growth & Momentum</div>
+        <div class="step-desc">Between sessions, you act. You grow. We revisit, refine, and celebrate what's changing.</div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- TESTIMONIALS -->
+<section id="testimonials">
+  <div class="section-header">
+    <div class="section-tag">Client Stories</div>
+    <h2 class="section-title">What people are saying.</h2>
+  </div>
+  <div class="testimonials-grid">
+    <div class="testimonial-card">
+      <div class="testimonial-badge">Executive</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">Working with Unnati Leadership was the first time I felt truly heard as a leader. The coaching helped me see myself more clearly — and make decisions from a place of confidence rather than fear.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">R</div>
+        <div>
+          <div class="author-name">Rohini M.</div>
+          <div class="author-role">VP of Operations, Tech Sector</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-badge youth">Youth</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">My daughter came in anxious about college applications and left with a completely different relationship with herself. The coach didn't push — she just asked the right questions until our daughter found her own answers.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">A</div>
+        <div>
+          <div class="author-name">Aisha & Family</div>
+          <div class="author-role">Parent, 11th Grade Student</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-badge" style="background: var(--gold); color: var(--forest);">Early Career</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">In six weeks I went from feeling completely lost at work to having an actual plan — for how I communicate, how I manage my time, and where I want to be in two years. This program changed everything.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar" style="background: var(--gold); color: var(--forest);">M</div>
+        <div>
+          <div class="author-name">Maya S.</div>
+          <div class="author-role">Marketing Associate, 1 year in</div>
+        </div>
+      </div>
+    </div>
+    <div class="testimonial-card">
+      <div class="testimonial-badge">Executive</div>
+      <div class="quote-mark">"</div>
+      <p class="testimonial-text">I came in thinking I needed a strategy coach. What I got was something more powerful — a mirror. Three months in and I'm leading differently, communicating better, and actually enjoying my work again.</p>
+      <div class="testimonial-author">
+        <div class="author-avatar">J</div>
+        <div>
+          <div class="author-name">James T.</div>
+          <div class="author-role">Founder & CEO, Series A Startup</div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <div class="contact-grid">
+    <div class="contact-left">
+      <div class="about-label" style="margin-bottom: 16px;">Get In Touch</div>
+      <h2>Let's start a conversation.</h2>
+      <p>Whether you're curious about executive coaching, the early career program, or youth coaching for your teen — we'd love to hear from you. No pressure, no pitch.</p>
+      <div class="contact-info">
+        <div class="contact-item">
+          <div class="contact-icon">📧</div>
+          <span><a href="/cdn-cgi/l/email-protection" class="__cf_email__" data-cfemail="d2b0bab3a4bcb3fca1bab3a0bfb392a7bcbcb3a6bbbeb7b3b6b7a0a1babba2fcb1bdbf">[email&#160;protected]</a></span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📞</div>
+          <span>202-768-5076</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">📍</div>
+          <span>Virtual &amp; In-Person Sessions Available</span>
+        </div>
+        <div class="contact-item">
+          <div class="contact-icon">🕐</div>
+          <span>Response within 24 hours</span>
+        </div>
+      </div>
+    </div>
+
+    <div class="contact-form" id="contactForm">
+      <h3>Send a Message</h3>
+      <p>We'll get back to you within one business day.</p>
+      <!-- ╔══════════════════════════════════════════════════════╗
+           ║  FORMSPREE SETUP — do this once you have your Gmail  ║
+           ║  1. Go to formspree.io and sign up                   ║
+           ║  2. Create a new form                                ║
+           ║  3. Copy your Form ID (looks like: xpzgkrqv)        ║
+           ║  4. Replace YOUR_FORM_ID below with that ID          ║
+           ║  5. Re-upload to Netlify — done!                     ║
+           ╚══════════════════════════════════════════════════════╝ -->
+      <form id="contactFormEl"
+            action="https://formspree.io/f/YOUR_FORM_ID"
+            method="POST"
+            onsubmit="handleSubmit(event)">
+        <div class="form-row">
+          <div class="form-group">
+            <label>First Name</label>
+            <input type="text" name="first_name" placeholder="Your first name" required>
+          </div>
+          <div class="form-group">
+            <label>Last Name</label>
+            <input type="text" name="last_name" placeholder="Your last name" required>
+          </div>
+        </div>
+        <div class="form-group">
+          <label>Email Address</label>
+          <input type="email" name="email" placeholder="you@example.com" required>
+        </div>
+        <div class="form-group">
+          <label>I'm Interested In</label>
+          <select name="service" required>
+            <option value="">Select a service...</option>
+            <option>Executive Coaching</option>
+            <option>Early Career Program (6-Week)</option>
+            <option>Youth Life Coaching</option>
+            <option>Not Sure Yet — Let's Talk</option>
+          </select>
+        </div>
+        <div class="form-group">
+          <label>Message</label>
+          <textarea name="message" placeholder="Tell us a little about your situation and what you're hoping for..." required></textarea>
+        </div>
+        <button type="submit" class="form-submit" id="submitBtn">Send Message →</button>
+      </form>
+      <div class="form-success" id="formSuccess">
+        <div class="checkmark">🌱</div>
+        <h4>Message received!</h4>
+        <p>Thank you for reaching out. We'll be in touch within 24 hours to continue the conversation.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- SCHEDULE -->
+<section id="schedule">
+  <div class="schedule-inner">
+    <div class="section-tag">Book a Session</div>
+    <h2>Ready to begin?</h2>
+    <p>Choose the session type that fits your needs and pick a time that works for you. All introductory calls are complimentary.</p>
+
+    <div class="schedule-options">
+      <div class="schedule-option active" onclick="selectOption(this)">
+        <div class="opt-icon">☕</div>
+        <div class="opt-name">Free Discovery Call</div>
+        <div class="opt-duration">30 min · No commitment</div>
+      </div>
+      <div class="schedule-option" onclick="selectOption(this)">
+        <div class="opt-icon">🎯</div>
+        <div class="opt-name">Executive Session</div>
+        <div class="opt-duration">60 min · Individual</div>
+      </div>
+      <div class="schedule-option" onclick="selectOption(this)">
+        <div class="opt-icon">🚀</div>
+        <div class="opt-name">Early Career Program</div>
+        <div class="opt-duration">30 min · Discovery call</div>
+      </div>
+      <div class="schedule-option" onclick="selectOption(this)">
+        <div class="opt-icon">🌿</div>
+        <div class="opt-name">Youth Intro Session</div>
+        <div class="opt-duration">45 min · Teen + Parent</div>
+      </div>
+    </div>
+
+    <div class="cal-placeholder">
+      <p>📅 Calendar integration coming soon — connect Calendly or Google Calendar here</p>
+      <p class="cal-note">To schedule immediately, click below or use the contact form above.</p>
+    </div>
+    <button class="book-btn" onclick="document.getElementById('contact').scrollIntoView({behavior:'smooth'})">
+      Book via Contact Form →
+    </button>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<footer>
+  <div class="footer-top">
+    <div class="footer-brand">
+      <div class="logo">Unnati <span>Leadership</span></div>
+      <p>Coaching for executives, early-career professionals, and young people — at every pivotal moment.</p>
+    </div>
+    <div class="footer-links">
+      <h4>Services</h4>
+      <a href="#services">Executive Coaching</a>
+      <a href="#early-career">Early Career Program</a>
+      <a href="#services">Youth Life Coaching</a>
+      <a href="#approach">Our Approach</a>
+    </div>
+    <div class="footer-links">
+      <h4>Company</h4>
+      <a href="#about">About Unnati</a>
+      <a href="#testimonials">Client Stories</a>
+      <a href="#contact">Contact</a>
+    </div>
+    <div class="footer-links">
+      <h4>Connect</h4>
+      <a href="#">LinkedIn</a>
+      <a href="#">Instagram</a>
+      <a href="#schedule">Book a Session</a>
+    </div>
+  </div>
+  <div class="footer-bottom">
+    <span>© 2025 Unnati Leadership. All rights reserved.</span>
+    <span><a href="#">Privacy Policy</a> · <a href="#">Terms</a></span>
+  </div>
+</footer>
+
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+function toggleNav() {
+  document.getElementById('navLinks').classList.toggle('open');
+}
+
+function selectOption(el) {
+  document.querySelectorAll('.schedule-option').forEach(o => o.classList.remove('active'));
+  el.classList.add('active');
+}
+
+async function handleSubmit(e) {
+  e.preventDefault();
+  const form = document.getElementById('contactFormEl');
+  const btn  = document.getElementById('submitBtn');
+
+  // If placeholder ID still in place, show a friendly reminder
+  if (form.action.includes('YOUR_FORM_ID')) {
+    alert('Almost there! Replace YOUR_FORM_ID in the HTML with your Formspree ID to activate the form. See the comment above the form for instructions.');
+    return;
+  }
+
+  btn.textContent = 'Sending…';
+  btn.disabled = true;
+
+  try {
+    const res = await fetch(form.action, {
+      method: 'POST',
+      body: new FormData(form),
+      headers: { 'Accept': 'application/json' }
+    });
+    if (res.ok) {
+      form.style.display = 'none';
+      document.getElementById('formSuccess').style.display = 'block';
+    } else {
+      btn.textContent = 'Something went wrong — try again';
+      btn.disabled = false;
+    }
+  } catch {
+    btn.textContent = 'Network error — please try again';
+    btn.disabled = false;
+  }
+}
+
+// Scroll reveal
+const observer = new IntersectionObserver((entr
